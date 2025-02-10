@@ -1,3 +1,5 @@
+import os
+
 import numpy as np
 import matplotlib.pyplot as plt
 import sklearn.metrics as skmetrics
@@ -139,13 +141,12 @@ def train():
 
 if __name__ == "__main__":
     # Generate .txt files to split the dataset into training, validation and testing
-    # datasetSplit(os.listdir(DATADIR), 
-    #              DATASET, 
-    #              byID=True, 
-    #              foldNum=10, 
-    #              foldIdx=0, 
-    #              validPercent=0.1, 
-    #              random_seed=42,
-    #              )
-    # torch.cuda.empty_cache()
+    datasetSplit(os.listdir(DATADIR), 
+                 DATASET, 
+                 byID=True, 
+                 foldNum=10, 
+                 foldIdx=0, 
+                 validPercent=0.1, 
+                 random_seed=42,
+                 )
     train()
