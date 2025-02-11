@@ -1,3 +1,5 @@
+import os
+
 import numpy as np
 
 import torch
@@ -8,7 +10,7 @@ def datasetSplit(fileNames,
                  foldNum=10, 
                  foldIdx=0, 
                  validPercent=0.1, 
-                 random_seed=42
+                 random_seed=None
                  ):
     fileNames.sort()
     # Whether or not split the dataset by subject ID
@@ -49,10 +51,11 @@ def datasetSplit(fileNames,
         foldNights = np.array_split(fileNames, foldNum)
         testNights = foldNights[foldIdx]
         trainNights = np.setdiff1d(fileNames, testNights)
-        np.random.seed(random_seed)
+        if random_seed is not None: np.random.seed(random_seed)
         validNights = np.random.choice(trainNights, size=round(len(trainNights) * validPercent), replace=False)
         trainNights = np.setdiff1d(trainNights, validNights)
     # Save to .txt as config files
+    if not os.path.exists('config'): os.makedirs('config')
     np.savetxt('config/' + dataset + '_train.txt', trainNights, fmt='%s')
     np.savetxt('config/' + dataset + '_valid.txt', validNights, fmt='%s')
     np.savetxt('config/' + dataset + '_test.txt', testNights, fmt='%s')
