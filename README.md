@@ -14,9 +14,17 @@ pip install -r requirements.txt
 2. Get the dataset
     1. Download the original dataset from [Sleep-EDF Database Expanded](https://www.physionet.org/content/sleep-edfx/1.0.0/)
     2. Prepare the dataset to get *.npz format data files using https://github.com/akaraspt/tinysleepnet/blob/main/prepare_sleepedf.py
-    3. In ***train.py***, change DATADIR to your data directory.
-    4. Use **datasetSplit** function to generate *.txt files under /config that configurate the training, validation and testing data.
-    5. Change training settings as needed and run:
+3. Start training
+    1. In ***train.py***, change DATADIR to your data directory.
+    2. Use ***datasetSplit*** function to generate *.txt files (You could also write these files manually) under /config that configurate the training, validation and testing data.
+    3. Change training setting as needed and run:
     ```python
     python train.py
+    ```
+4. Prediction
+    1. In ***predict.py***, change DATADIR to your data directory.
+    2. Use the ****_pred.txt*** file under /config to configurate the files you would like to predict. Those files should also be in .npz format as mentioned in training.
+    3. Change prediction setting as needed and run:
+    ```python
+    python predict.py
     ```

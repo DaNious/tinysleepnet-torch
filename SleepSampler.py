@@ -13,7 +13,7 @@ class SleepSampler(Sampler):
                  random_seed=None,
                  ):
         """ 
-        Argument 'groupSize' determines how many nights' data is grouped to formulate a batch, 
+        Argument 'groupSize' determines how many nights' data is grouped to form a batch, 
         which will be used to generate the output index. 'groupSize' typically equals to batch size,
         while it sometimes has to be 1 (e.g., dataloader for testing and validation) so that will not
         be any dummy data (those padded with zeros).
