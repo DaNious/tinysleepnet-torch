@@ -1,4 +1,0 @@
-SC4161E0.npz
-SC4162E0.npz
-SC4191E0.npz
-SC4192E0.npz
